@@ -1,43 +1,44 @@
-<!DOCTYPE html><html lang="de"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spanani – Web Developer</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/phosphor-icons@2.0.5/dist/phosphor-icons.min.js"></script>
-  </head><body>
-  
-  <header class="glass"><div class="logo">Spanani</div>
-  <nav><a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></nav>
-  </header>
-  
-  <section style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 2rem;">
-    <h1 style="font-size:5.5rem;line-height:1.1;margin-bottom:1rem;">
-      All in One<br>Personal Portfolio for<br><span style="background:linear-gradient(90deg,#ec4899,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Web Developer.</span>
-    </h1>
-    <p style="font-size:1.6rem;max-width:800px;opacity:.9;margin:2rem 0;">
-      Ich bin Spanani – Full-Stack Entwickler mit Leidenschaft für moderne, schnelle und wunderschöne Webseiten.
-    </p>
-    <div>
-      <a href="projects.html" class="btn btn-primary">Projekte ansehen</a>
-      <a href="contact.html" class="btn btn-outline">Kontakt</a>
-    </div>
-  </section>
-  
-  <div class="grid" style="padding:6rem 4rem;max-width:1400px;margin:0 auto;">
-    <div class="glass" style="padding:3rem;text-align:center;">
-      <i class="ph ph-rocket-launch" style="font-size:4rem;background:linear-gradient(90deg,#ec4899,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
-      <h3 style="margin:1.5rem 0;color:#c084fc;">Fast Performance</h3>
-      <p>Blitzschnelle Ladezeiten dank modernster Technologien.</p>
-    </div>
-    <div class="glass" style="padding:3rem;text-align:center;">
-      <i class="ph ph-device-mobile" style="font-size:4rem;background:linear-gradient(90deg,#ec4899,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
-      <h3 style="margin:1.5rem 0;color:#c084fc;">Perfect Responsive</h3>
-      <p>Perfekt auf allen Geräten – vom Smartphone bis 4K-Monitor.</p>
-    </div>
-    <div class="glass" style="padding:3rem;text-align:center;">
-      <i class="ph ph-headset" style="font-size:4rem;background:linear-gradient(90deg,#ec4899,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></i>
-      <h3 style="margin:1.5rem 0;color:#c084fc;">24/7 Support</h3>
-      <p>Immer erreichbar – ich helfe dir gern weiter!</p>
-    </div>
-  </div>
-  
-  <script src="script.js"></script></body></html>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Spanani DEV</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Spanani</h1>
+						<p>Developer &nbsp;&bull;&nbsp; Beginner &nbsp;&bull;&nbsp; Trying to evolve</p>
+						<nav>
+							<ul>
+								<li><a href="https://x.com/spananidev" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="https://discord.gg/ec3Uhbc2" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
+								<li><a href="#" class="icon brands fa-dev"><span class="label"></span></a></li>
+								<li><a href="https://github.com/spananide" class="icon brands fa-github"><span class="label">Github</span></a></li>
+								<li><a href="mailto:ttvspanani@gmail.com" class="icon solid fa-envelope" target="_blank" rel="noopener"><span class="label">Email</span></a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; Spanani 2025.</span>
+					</footer>
+
+			</div>
+		</div>
+		<script>
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
+</html>
