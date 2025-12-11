@@ -57,11 +57,3 @@ footer{
     .back{top:1.2rem;left:1.2rem}
     footer{bottom:1.5rem}
 }
-#custom-cursor{ /* gleicher Cursor wie auf der Hauptseite */
-    position:fixed;width:16px;height:16px;
-    background:#a855f7;border-radius:50%;
-    pointer-events:none;z-index:9999;
-    opacity:0.4;mix-blend-mode:difference;
-    transition:transform .06s ease;
-    box-shadow:0 0 20px #a855f7;
-}

@@ -29,11 +29,19 @@
             </nav>
         </header>
         <footer id="footer">© 2025 Spanani</footer>
-  </div>
+    </div>
 </div>
 
-<div id="custom-cursor"></div>
-
-<script src="assets/js/addons.js"></script>
+<script>
+    window.onload = () => document.body.classList.remove('is-preload');
+    
+    // Sehr dezenter Parallax – fast nicht spürbar, aber smooth
+    document.addEventListener('mousemove', e => {
+        const stars = document.getElementById('stars');
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        stars.style.transform = `translate(${x}px, ${y}px)`;
+    });
+</script>
 </body>
 </html>
