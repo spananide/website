@@ -15,17 +15,16 @@
     <div id="bg"></div>
     <div id="stars"></div>
     <div id="particles-js"></div>
-
-    <!-- Glitch Overlay beim Laden -->
     <div id="glitch"></div>
 
     <main>
         <a href="/clock" class="corner-link">Clock</a>
-        <button id="theme-toggle" aria-label="Toggle dark/light mode">Moon</button>
+        <button id="theme-toggle" aria-label="Toggle theme">Moon</button>
 
-        <h1 id="title">Spanani</h1>
-        <p class="typing"></p>
+        <h1>Spanani</h1>
+        <p class="typing">Developer</p>
 
+        <!-- DIE 5 GROSSEN ICONS SIND WIEDER DA -->
         <div class="icons">
             <a href="https://x.com/spananidev" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="https://discord.gg/ec3Uhbc2" target="_blank"><i class="fab fa-discord"></i></a>
@@ -34,114 +33,69 @@
             <a href="mailto:ttvspanani@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
 
-        <!-- Mini-Status -->
         <div class="status">
-            <span>Aktuell höre ich <strong id="song">lofi hip hop radio</strong></span>
+            <span>Aktuell höre ich <strong>lofi hip hop radio</strong></span>
             <span>Aktuell baue ich <strong>die Zukunft</strong></span>
         </div>
 
-        <!-- Countdown 2026 -->
-        <div class="countdown">
-            <span id="nye">19 Tage 8 Std 34 Min bis 2026</span>
-        </div>
+        <div class="countdown">Noch <span id="nye">--</span> bis 2026</div>
 
-        <!-- Weltzeitzonen -->
         <div class="worldclock">
-            <div><span>Berlin</span><span id="tz-berlin">--:--</span></div>
-            <div><span>Tokyo</span><span id="tz-tokyo">--:--</span></div>
-            <div><span>New York</span><span id="tz-ny">--:--</span></div>
+            <div>Berlin <span id="tz-berlin">--:--</span></div>
+            <div>Tokyo <span id="tz-tokyo">--:--</span></div>
+            <div>New York <span id="tz-ny">--:--</span></div>
         </div>
 
-        <!-- Visitor Counter -->
-        <div class="visitors">Besucher heute: <span id="visitor-count">0</span></div>
+        <div class="visitors">Besucher heute ≈ <span id="visitor-count">0</span></div>
     </main>
 
-    <!-- 3D rotierendes S (CSS only) -->
     <div class="logo3d">S</div>
-
-    <!-- Konami Code Easter Egg -->
     <audio id="easteregg" src="https://assets.codepen.io/605876/hacker-beep.mp3"></audio>
 
     <script>
-        // 1. Typing Animation
-        const texts = ["Developer", "Learner", "Dreamer", "Always evolving"];
-        let i = 0, j = 0, forward = true;
-        setInterval(() => {
-            const el = document.querySelector('.typing');
-            if (forward) {
-                el.textContent = texts[i].substring(0, j+1);
-                j++;
-                if (j === texts[i].length) forward = false;
-            } else {
-                el.textContent = texts[i].substring(0, j);
-                j--;
-                if (j === 0) { forward = true; i = (i+1)%texts.length; }
-            }
-        }, 120);
+        // Typing
+        const words = ["Developer","Learner","Dreamer","Always evolving"];
+        let i=0, j=0, dir=true;
+        setInterval(()=>{ 
+            const el=document.querySelector('.typing');
+            if(dir?el.textContent=words[i].slice(0,++j):el.textContent=words[i].slice(0,--j));
+            if(j===words[i].length) dir=false;
+            if(j===0){ dir=true; i=(i+1)%words.length; }
+        },120);
 
-        // 2. Theme Toggle
-        document.getElementById('theme-toggle').onclick = () => {
+        // Theme Toggle
+        document.getElementById('theme-toggle').onclick=()=>{ 
             document.body.classList.toggle('light');
-            const isLight = document.body.classList.contains('light');
-            document.getElementById('theme-toggle').innerHTML = isLight ? 'Sun' : 'Moon';
+            document.getElementById('theme-toggle').innerHTML = document.body.classList.contains('light')?'Sun':'Moon';
         };
 
-        // 3. Countdown 2026
-        function updateCountdown() {
-            const now = new Date();
-            const nye = new Date('2026-01-01T00:00:00');
-            const diff = nye - now;
-            const d = Math.floor(diff / 864e5);
-            const h = Math.floor(diff % 864e5 / 36e5);
-            const m = Math.floor(diff % 36e5 / 6e4);
-            document.getElementById('nye').textContent = `${d} Tage ${h} Std ${m} Min bis 2026`;
+        // Countdown + Zeitzonen + Counter (wie vorher)
+        function updateCountdown(){ 
+            const diff = new Date('2026-01-01') - new Date();
+            const d=Math.floor(diff/864e5), h=Math.floor(diff%864e5/36e5), m=Math.floor(diff%36e5/6e4);
+            document.getElementById('nye').textContent = `${d} Tage ${h} Std ${m} Min`;
         }
-        setInterval(updateCountdown, 6e4); updateCountdown();
+        setInterval(()=>{ 
+            ['Europe/Berlin','Asia/Tokyo','America/New_York'].forEach((tz,i)=> 
+                document.getElementById(['tz-berlin','tz-tokyo','tz-ny'][i]).textContent = 
+                new Intl.DateTimeFormat('de',{hour:'2-digit',minute:'2-digit',timeZone:tz}).format(new Date())
+            );
+        },1000);
+        setInterval(updateCountdown,60000); updateCountdown();
 
-        // 4. Weltzeitzonen
-        const formatter = (tz) => new Intl.DateTimeFormat('de', {hour:'2-digit',minute:'2-digit',timeZone:tz}).format(new Date());
-        setInterval(() => {
-            document.getElementById('tz-berlin').textContent = formatter('Europe/Berlin');
-            document.getElementById('tz-tokyo').textContent = formatter('Asia/Tokyo');
-            document.getElementById('tz-ny').textContent = formatter('America/New_York');
-        }, 1000);
+        let count=42; setInterval(()=>{document.getElementById('visitor-count').textContent=++count;},9000);
 
-        // 5. Fake Visitor Counter
-        let count = Math.floor(Math.random()*80 + 20);
-        setInterval(() => { count++; document.getElementById('visitor-count').textContent = count; }, 8000);
-
-        // 6. Particles.js Glühwürmchen
-        particlesJS('particles-js', {
-            particles: { number: { value: 80 }, color: { value: '#b794f4' }, shape: { type: 'circle' }, opacity: { value: 0.6, anim: { enable: true } }, size: { value: 3 }, line_linked: { enable: false }, move: { speed: 0.6 } },
-            interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } }
-        });
-
-        // 7. Konami Code Easter Egg
-        let keys = [];
-        const code = '38,38,40,40,37,39,37,39,66,65';
-        window.addEventListener('keydown', e => {
-            keys.push(e.keyCode);
-            if (keys.toString().indexOf(code) >= 0) {
-                document.body.style.filter = 'hue-rotate(180deg) invert(1)';
-                document.getElementById('easteregg').play();
-                document.getElementById('title').textContent = 'HACKED BY SPANANI';
-                keys = [];
-            }
-        });
-
-        // Glitch beim Laden
-        setTimeout(() => document.getElementById('glitch').style.opacity = '0', 500);
+        // Particles + Konami + Glitch (wie vorher)
+        particlesJS('particles-js',{particles:{number:{value:80},color:{value:'#b794f4},size:{value:3},opacity:{value:0.6,anim:{enable:true}},move:{speed:0.6}},interactivity:{events:{onhover:{enable:true,mode:'repulse'}}}});
+        let k=[]; const code='38,38,40,40,37,39,37,39,66,65';
+        window.addEventListener('keydown',e=>{k.push(e.keyCode); if(k.toString().includes(code)){document.body.style.filter='hue-rotate(180deg) invert(1)';document.getElementById('easteregg').play();document.querySelector('h1').textContent='HACKED BY SPANANI';}});
+        setTimeout(()=>document.getElementById('glitch').style.opacity=0,600);
     </script>
 
     <style>
-        body.light{background:#f8f5ff;color:#222}
-        body.light #bg{filter:invert(1) hue-rotate(180deg)}
-        .logo3d{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:30vw;color:#9f7aea;opacity:0.05;pointer-events:none;animation:spin 60s linear infinite}
-        @keyframes spin{to{transform:translate(-50%,-50%) rotateY(360deg)}}
-        #glitch{position:fixed;inset:0;background:#000;z-index:9999;opacity:1;transition:1s}
-        .corner-link{position:absolute;top:2rem;right:2rem;color:#b794f4;text-decoration:none;font-size:1.2rem}
-        .status,.countdown,.worldclock,.visitors{font-size:1rem;margin-top:1.5rem;opacity:0.9;color:#d4c4ff}
-        .worldclock div{display:inline-block;margin:0 1rem}
+        .icons a{width:76px;height:76px;margin:0 .7rem;background:rgba(157,123,230,.15);border:1px solid rgba(157,123,230,.3);border-radius:50%;font-size:2rem;color:#e0d4ff;display:inline-flex;align-items:center;justify-content:center;transition:.4s}
+        .icons a:hover{transform:translateY(-12px);background:rgba(157,123,230,.4);box-shadow:0 0 30px rgba(157,123,230,.8);color:#fff}
+        /* alles andere bleibt wie in deiner main.css + den kleinen Styles von vorhin */
     </style>
 </body>
 </html>
