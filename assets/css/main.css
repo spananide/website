@@ -19,45 +19,34 @@ html,body{height:100%;font-family:'Space Grotesk',sans-serif;overflow:hidden;bac
 main{
     position:relative;height:100vh;
     display:flex;flex-direction:column;justify-content:center;align-items:center;
-    text-align:center;padding:5vh 2rem 10vh;
+    text-align:center;padding:2rem;
 }
 
 h1{
-    font-size:clamp(5rem,14vw,12rem);font-weight:700;margin-bottom:2rem;
+    font-size:clamp(5rem,14vw,12rem);font-weight:700;margin-bottom:1rem;
     background:linear-gradient(90deg,#e0d4ff,#b794f4,#9f7aea);
     -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 
-/* Buttons ganz oben */
-.top-icons{
-    position:absolute;top:5vh;left:50%;transform:translateX(-50%);
-    display:flex;gap:2.5rem;
+.subtitle{
+    font-size:1.7rem;color:#d4c4ff;margin-bottom:4rem;
 }
-.top-icons a{
-    width:68px;height:68px;
+
+.icons a{
+    width:76px;height:76px;margin:0 1rem;
     background:rgba(157,123,230,.15);
     border:1px solid rgba(157,123,230,.3);
-    border-radius:50%;font-size:1.9rem;color:#e0d4ff;
-    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;font-size:2.1rem;color:#e0d4ff;
+    display:inline-flex;align-items:center;justify-content:center;
     backdrop-filter:blur(12px);transition:.4s;
 }
-.top-icons a:hover{
-    transform:scale(1.15);
+.icons a:hover{
+    transform:translateY(-14px) scale(1.12);
     background:rgba(157,123,230,.4);
-    box-shadow:0 0 40px rgba(157,123,230,.8);
+    box-shadow:0 0 45px rgba(157,123,230,.8);
+    color:#fff;
 }
 
-/* Unterstrichene Subtitle */
-.subtitle{
-    font-size:1.6rem;color:#d4c4ff;margin-top:-1rem;
-    position:relative;
-}
-.subtitle span{
-    background:linear-gradient(90deg,transparent,#9f7aea80,transparent);
-    padding:0 2rem;
-}
-
-/* Clock-Seite Footer */
 footer{
-    position:absolute;bottom:2rem;color:#b794f4;opacity:0.7;font-size:0.9rem;
+    position:absolute;bottom:2.5rem;color:#b794f4;opacity:0.75;font-size:0.95rem;
 }
