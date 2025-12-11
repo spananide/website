@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clock — Spanani</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/clock.css">
+</head>
+<body>
+
+    <div id="bg"></div>
+    <div id="stars"></div>
+
+    <main>
+        <a href="/" class="back">← Back</a>
+
+        <h1>Clock</h1>
+        <p class="subtitle">Just a beautiful time thing</p>
+
+        <!-- Analog Clock -->
+        <div class="clock-container">
+            <div class="clock">
+                <div class="hand hour"></div>
+                <div class="hand minute"></div>
+                <div class="hand second"></div>
+                <div class="center-dot"></div>
+                <div class="number" style="--i:1">1"><span>1</span></div>
+                <div class="number" style="--i:2"><span>2</span></div>
+                <div class="number" style="--i:3"><span>3</span></div>
+                <div class="number" style="--i:4"><span>4</span></div>
+                <div class="number" style="--i:5"><span>5</span></div>
+                <div class="number" style="--i:6"><span>6</span></div>
+                <div class="number" style="--i:7"><span>7</span></div>
+                <div class="number" style="--i:8"><span>8</span></div>
+                <div class="number" style="--i:9"><span>9</span></div>
+                <div class="number" style="--i:10"><span>10</span></div>
+                <div class="number" style="--i:11"><span>11</span></div>
+                <div class="number" style="--i:12"><span>12</span></div>
+            </div>
+        </div>
+
+        <!-- Digital Clock -->
+        <div class="digital">
+            <span id="time">00:00:00</span>
+            <span id="ampm">AM</span>
+        </div>
+
+        <footer>© 2025 Spanani — made with curiosity & coffee</footer>
+    </main>
+
+    <script>
+        // Analog Clock
+        setInterval(() => {
+            const now = new Date();
+            const h = now.getHours() % 12 / 12 * 360 + 90;
+            const m = now.getMinutes() / 60 * 360 + 90;
+            const s = now.getSeconds() / 60 * 360 + 90;
+
+            document.querySelector('.hour').style.transform   = `rotate(${h + m/12}deg)`;
+            document.querySelector('.minute').style.transform = `rotate(${m}deg)`;
+            document.querySelector('.second').style.transform = `rotate(${s}deg)`;
+        }, 1000);
+
+        // Digital Clock
+        function updateTime() {
+            const now = new Date();
+            let h = now.getHours();
+            const m = now.getMinutes().toString().padStart(2, '0');
+            const s = now.getSeconds().toString().padStart(2, '0');
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12 || 12;
+
+            document.getElementById('time').textContent = `${h}:${m}:${s}`;
+            document.getElementById('ampm').textContent = ampm;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
