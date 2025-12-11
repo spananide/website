@@ -1,127 +1,35 @@
-/* assets/css/clock.css */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock — Spanani</title>
+    <link rel="stylesheet" href="../assets/css/clock.css">
+</head>
+<body>
 
-:root {
-    --bg: #0d0d1a;
-    --purple: #a855f7;
-    --purple-light: #c084fc;
-    --text: #f0e6ff;
-    --glow: rgba(168, 85, 247, 0.5);
-    --glow-strong: rgba(168, 85, 247, 0.7);
-}
+<a href="/" class="back">← Zurück</a>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<div class="center">
+    <h1>Clock</h1>
+    <div class="time" id="time">00:00:00</div>
+    <div class="date" id="date">Lade…</div>
+</div>
 
-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: linear-gradient(135deg, var(--bg) 0%, #16213e 100%);
-    color: var(--text);
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    animation: fadeIn 1.2s ease-out;
-}
+<footer>© 2025 Spanani</footer>
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.back-btn {
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
-    z-index: 10;
-    color: var(--purple);
-    border: 1.5px solid var(--purple);
-    background: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.4s ease;
-}
-
-.back-btn:hover {
-    background: var(--purple);
-    color: #000;
-    box-shadow: 0 0 25px var(--glow-strong);
-    transform: translateY(-2px);
-}
-
-.container {
-    text-align: center;
-    padding: 2rem;
-}
-
-h1 {
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(90deg, var(--purple), var(--purple-light));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 40px var(--glow);
-    animation: titleGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-    from { filter: drop-shadow(0 0 15px var(--glow)); }
-    to { filter: drop-shadow(0 0 35px var(--glow-strong)); }
-}
-
-.time {
-    font-size: clamp(6rem, 22vw, 16rem);
-    font-weight: 200;
-    letter-spacing: -0.05em;
-    line-height: 1;
-    color: var(--purple-light);
-    text-shadow: 
-        0 0 20px var(--glow),
-        0 0 40px var(--glow),
-        0 0 80px var(--glow-strong);
-    animation: timePulse 3s ease-in-out infinite;
-}
-
-@keyframes timePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.015); }
-}
-
-#date {
-    margin-top: 2.5rem;
-    font-size: clamp(1.2rem, 4vw, 2rem);
-    font-weight: 300;
-    opacity: 0.85;
-    letter-spacing: 0.05em;
-}
-
-.footer {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.85rem;
-    opacity: 0.6;
-}
-
-/* Improved mobile adjustments */
-@media (max-width: 640px) {
-    .back-btn {
-        top: 1rem;
-        left: 1rem;
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
+<script>
+    function update(){
+        const now = new Date();
+        document.getElementById('time').textContent = 
+            now.toLocaleTimeString('de-DE', {hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+        document.getElementById('date').textContent = 
+            now.toLocaleDateString('de-DE', {weekday:'long',day:'numeric',month:'long',year:'numeric'})
+               .replace(/^\w/, c => c.toUpperCase());
     }
-    .container { padding: 1rem; }
-    .footer { bottom: 1.2rem; }
-    h1 { font-size: clamp(2.5rem, 10vw, 5rem); }
-    .time { font-size: clamp(5rem, 22vw, 14rem); }
-    #date { font-size: clamp(1rem, 4vw, 1.8rem); }
-}
+    update();
+    setInterval(update,1000);
+</script>
+
+</body>
+</html>
