@@ -1,66 +1,35 @@
-# Hey, ich bin Spanani 👋
+# Spanani.dev
 
-<img src="https://spanani.de/assets/img/footer.svg" alt="Spanani Logo" width="120" align="right" style="margin-left: 20px;"/>
+<img src="https://spanani.de/assets/images/bg.jpg" alt="Purple space background" width="100%">
 
-**Developer • Beginner • Trying to evolve**
+**Minimal. Purple. Always evolving.**
 
-Willkommen auf dem offiziellen Repository meiner persönlichen Entwickler-Website  
-→ [https://spanani.dev](https://spanani.de)
+Just a clean personal card + a beautiful clock page – built with pure HTML, CSS and a little bit of love.
 
-Hier teile ich meine Projekte, meinen Fortschritt und alles, woran ich gerade baue – von kleinen Experimenten bis zu größeren Ideen.
+Live at → https://spanani.de
 
----
+### Pages
+- `/` – Home` – Name, links and that purple vibe  
+- `/clock – Clock` – Big glowing time + date in the same style
 
-### 🌐 Die Website
-- Minimalistisches One-Page-Design mit wunderschönem Gradient-Hintergrund  
-- Voll responsiv (Mobile + Desktop)  
-- Schnell geladen dank purer HTML/CSS/JS (kein Framework-Bloat)  
-- FontAwesome Icons + eigene Farbpalette  
+### Features
+- Fully responsive (looks perfect on phone, tablet, desktop)
+- Parallax starfield + gradient sky background
+- Glassmorphism social icons with hover glow
+- Gradient text effect on the name
+- No frameworks, no build tools, < 10 KB CSS
+- Zero JavaScript on the main page (only a tiny script on /clock)
 
-Live: [spanani.de](https://spanani.de)
-
----
-
-### 🛠️ Tech Stack der Seite
+### Tech Stack
 - HTML5
-- CSS3 (SCSS → kompiliert zu `main.css`)
-- Vanilla JavaScript (nur ein paar Zeilen für den Preload-Effekt)
-- Font Awesome 5 (Brands + Solid)
-- Hosting: kostenlos über GitHub Pages / Vercel / Netlify (je nach aktuellem Setup)
+- CSS3 (Flexbox, backdrop-filter, clamp(), gradients)
+- Font Awesome 6 (free icons)
+- Google Fonts – Space Grotesk
 
----
-
-### 🚀 Meine aktuellen Projekte & Lernziele
-| Projekt / Thema           | Status         | Tech Stack                  | Link |
-|---------------------------|----------------|-----------------------------|------|
-| Portfolio-Website (dieses) | Live           | HTML, SCSS, JS              | [spanani.dev](https://spanani.dev) |
-| Discord Bots              | aktiv          | Node.js, discord.js         | privat (bald public) |
-| Kleine Web-Apps           | in Planung     | React / Next.js             | coming soon |
-| UI/Design Experimente     | regelmäßig     | Figma → Code                | Dribbble (in Arbeit) |
-
----
-
-### 📈 Was ich gerade lerne
-- React & Next.js (App Router)
-- TypeScript
-- Bessere Barrierefreiheit (a11y)
-- Performance-Optimierung
-- Clean Code & bessere Projektstruktur
-
-Ich bin noch am Anfang – aber ich gebe jeden Tag Gas.
-
----
-
-### 📬 Kontakt
-- Twitter/X: [@Spanani](https://x.com/spananidev)
-- GitHub: [github.com/Spanani](https://github.com/spananide)
-- E-Mail: hallo@spanani.dev
-
-Gerne Feedback, Tipps oder einfach ein „Hey“ schreiben – ich freue mich über jeden Kontakt!
-
----
-
-### ⭐ Star dieses Repo, wenn…
-…du das Design magst  
-…du auch gerade am Anfang stehst  
-…oder du einfach nette Menschen unterstützen willst :)
+### Local development
+Just open `index.html` in your browser – no server needed.  
+Or use any static server:
+```bash
+npx serve
+# or
+python -m http.server 8000
